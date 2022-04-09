@@ -1,3 +1,4 @@
+CurrentBuild.displayName="Madan-#"+CurrentBuild.number
 pipeline {
     agent any
     stages {
