@@ -1,9 +1,16 @@
 pipeline {
     agent any
+    envirornament{
+       PATH=" /usr/share/maven:$PATH"
     stages {
         stage('Git checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/madanjk98/Jenkins.git'
+            }
+        }
+        stage('mvn build') {
+            steps {
+                mvn "clean package"
             }
         }
     }
