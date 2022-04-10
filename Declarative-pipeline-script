@@ -15,7 +15,21 @@ pipeline {
                 sh "mvn clean package"
             }
         }
-	
+		stage('Docker build') {
+            steps {
+                sh "docker build -t 9164998583/Madan:$BUILD_NUMBER"
+            }
+        }
+		stage('Docker login') {
+            steps {
+                sh "echo $DOCKER_CREDENTIALS_PSW | docker login -u $DOCKER_CREDENTIALS_USR --password-stdIn "
+            }
+        }		
+		stage('Push image') {
+            steps {
+                sh "docker push 9164998583/Madan:$BUILD_NUMBER"
+            }
+        }
 		
 		
     }
