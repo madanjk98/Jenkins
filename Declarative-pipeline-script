@@ -1,7 +1,7 @@
 currentBuild.displayName="Madan-#"+currentBuild.number
 pipeline {
     agent any
-	envirornament{
+	environament{
 	  DOCKER_CREDENTIALS=credentials('9164998583-docker-hub')
 	  }
     stages {
